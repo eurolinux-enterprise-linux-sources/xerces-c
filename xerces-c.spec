@@ -1,7 +1,7 @@
 Summary:	Validating XML Parser
 Name:		xerces-c
 Version:	3.1.1
-Release:	4%{?dist}
+Release:	6%{?dist}
 License:	ASL 2.0
 Group:		System Environment/Libraries
 URL:		http://xml.apache.org/xerces-c/
@@ -96,6 +96,12 @@ rm -rf $RPM_BUILD_ROOT
 %doc README LICENSE NOTICE CREDITS doc _docs/*
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 3.1.1-6
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 3.1.1-5
+- Mass rebuild 2013-12-27
+
 * Tue Sep 10 2013 Avesh Agarwal <avagarwa@redhat.com> - 3.1.1-4
 - Rebuilding for rhel7
 
