@@ -1,12 +1,13 @@
 Summary:	Validating XML Parser
 Name:		xerces-c
 Version:	3.1.1
-Release:	6%{?dist}
+Release:	7%{?dist}
 License:	ASL 2.0
 Group:		System Environment/Libraries
 URL:		http://xml.apache.org/xerces-c/
 Source0:	http://archive.apache.org/dist/xerces/c/3/sources/xerces-c-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Patch1: 	XMLReader.cpp.patch
 
 BuildRequires:	dos2unix
 
@@ -46,7 +47,8 @@ write XML data. A shared library is provided for parsing, generating,
 manipulating, and validating XML documents.
 
 %prep
-%setup -q 
+%setup -q
+%patch1 -p1
 # Copy samples before build to avoid including built binaries in -doc package
 mkdir -p _docs
 cp -a samples/ _docs/
@@ -96,6 +98,13 @@ rm -rf $RPM_BUILD_ROOT
 %doc README LICENSE NOTICE CREDITS doc _docs/*
 
 %changelog
+* Mon Jun 29 2015 Scientific Linux Auto Patch Process <SCIENTIFIC-LINUX-DEVEL@LISTSERV.FNAL.GOV>
+- Eliminated rpmbuild "bogus date" error due to inconsistent weekday,
+  by assuming the date is correct and changing the weekday.
+
+* Mon Jun 22 2015 Avesh Agarwal <avagarwa@redhat.com> - 3.1.1-7
+Resolves: rhbz#1217104 CVE-2015-0252
+
 * Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 3.1.1-6
 - Mass rebuild 2014-01-24
 
